@@ -1,3 +1,35 @@
+/*
+BSD 3-Clause License
+
+Copyright (c) 2017, 
+Fabien Teytaud, Julien Dehos, Joris Duguépéroux and Ahmad Mazyad
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #include <hex_hav/PlayerRaveNast2.hpp>
 
@@ -30,8 +62,11 @@ cell_t PlayerRaveNast2::computeSimulation(NodeRave * ptrNode)
     while (not testBoard.isGameFinished()) 
     {
 
-        // bof (52%)
-        // considère tous les coups possibles (même si a1/a2 pas dans nast)
+        //////////////////////////////////////////////////////////////////////
+        // improve implementation -> win rate = 52%
+        // consider all possible moves (even if a1/a2 not in nast)
+        //////////////////////////////////////////////////////////////////////
+
         // compute CDF
         std::vector<int> moveIndices = testBoard.findEmptyIndices();
         std::vector<double> cdf(moveIndices.size());
@@ -62,25 +97,11 @@ cell_t PlayerRaveNast2::computeSimulation(NodeRave * ptrNode)
                 indexToPlay = moveIndices[i];
 
         /*
-        // version initiale qui marche très bof (49%)
-        // considère tous les coups nast
-        // compute all CDF
-        double sumProba = 0.0;
-        for (auto & record : _nastRecords) 
-            record.second.updateCdf(sumProba);
-        // choose one action
-        double rndCdf = sumProba * _prngNast2Cdf.generate();
-        int indexToPlay = -1;
-        for (auto & record : _nastRecords) 
-            if (record.second._cdf >= rndCdf)
-                break;
-            else
-                indexToPlay = record.second._action2;
-        */
+        //////////////////////////////////////////////////////////////////////
+        // original implementation -> win rate = 46%
+        // for each move, consider nast moves corresponding to action2
+        //////////////////////////////////////////////////////////////////////
 
-        /*
-        // version qui devrait correspondre au papier mais qui marche pas (46%)
-        // pour chaque coup possible, considère les coups nast dont le action2 correspond
         // compute CDF
         std::vector<int> moveIndices = testBoard.findEmptyIndices();
         std::vector<double> cdf(moveIndices.size());

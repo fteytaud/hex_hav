@@ -1,7 +1,35 @@
-// Copyright © 2014 Teytaud & Dehos <{teytaud,dehos}@lisic.univ-littoral.fr>
-// This work is free. You can redistribute it and/or modify it under the
-// terms of the Do What The Fuck You Want To Public License, Version 2,
-// as published by Sam Hocevar. See the COPYING.WTFPL file for more details.
+/*
+BSD 3-Clause License
+
+Copyright (c) 2017, 
+Fabien Teytaud, Julien Dehos, Joris Duguépéroux and Ahmad Mazyad
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #include "ViewMenu.hpp"
 
@@ -72,15 +100,6 @@ void ViewMenu::handleFileNewgame()
             MAX_BOARDSIZE);
     Gtk::SpinButton sizeSpinButton(sizeAdjustment);
     gameVBox.pack_start(sizeSpinButton, Gtk::PACK_SHRINK);
-    /*
-       Gtk::Label boardLabel("\nBoard: ", Gtk::ALIGN_START);
-       gameVBox.pack_start(boardLabel, Gtk::PACK_SHRINK);
-       Gtk::ComboBoxText boardCombo;
-       for (auto& p : _refController._boards)
-       boardCombo.append_text(p.first);
-       boardCombo.set_active_text(_refController._boardName);
-       gameVBox.pack_start(boardCombo, Gtk::PACK_SHRINK);
-       */
 
     // white player
     Gtk::VBox whiteVBox;
@@ -116,7 +135,6 @@ void ViewMenu::handleFileNewgame()
     if (response == Gtk::RESPONSE_OK) 
     {
         _refController._sizeParameter = sizeSpinButton.get_value_as_int();
-        //_refController._boardName = boardCombo.get_active_text();
         dialogToPlayerData(whiteCombo, whiteParams, _refController._whitePlayers, 
                 _refController._whiteName);
         dialogToPlayerData(blackCombo, blackParams, 
@@ -184,8 +202,10 @@ void ViewMenu::playerDataToDialog(
 void ViewMenu::handleMenuAbout() 
 {
     Gtk::AboutDialog dialog;
-    dialog.set_program_name("hstar");
-    dialog.set_version("1.0");
+    dialog.set_program_name("hex_hav_gui1");
+    dialog.set_authors( std::vector<Glib::ustring> {"Fabien Teytaud", 
+            "Julien Dehos", "Joris Duguépéroux", "Ahmad Mazyad"} );
+    dialog.set_website("https://github.com/fteytaud/hex_hav");
     dialog.run();
 }
 
