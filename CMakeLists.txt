@@ -104,29 +104,27 @@ target_link_libraries( hav_gui2.out
 
 # unit tests
 
-# find_package( CxxTest )
-# if( CXXTEST_FOUND )
-# 
-#     include_directories( ${CXXTEST_INCLUDE_DIR} )
-#     enable_testing()
-# 
-#     set( SOURCE_TEST
-#         src/unittests/BoardHex_test.hpp
-#         src/unittests/Board_test.hpp
-#         src/unittests/PlayerMcts_test.hpp
-#         src/unittests/PlayerRavePr_test.hpp
-#         src/unittests/PlayerRave_test.hpp
-#         src/unittests/Player_test.hpp
-#         src/unittests/Prng_test.hpp
-#         )
-# 
-#     CXXTEST_ADD_TEST( hav_unittests.out hav_unittests.cpp ${SOURCE_TEST} )
-#     target_link_libraries( hav_unittests.out hav )
-# 
-#     CXXTEST_ADD_TEST( hex_unittests.out hex_unittests.cpp ${SOURCE_TEST} )
-#     target_link_libraries( hex_unittests.out hex )
-# 
-# endif()
+find_package(CxxTest)
+if(CXXTEST_FOUND)
+    include_directories(${CXXTEST_INCLUDE_DIR})
+    enable_testing()
+
+    set( TEST_SOURCE
+	${CMAKE_CURRENT_SOURCE_DIR}/src/unittests/BoardHex_test.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/unittests/Board_test.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/unittests/PlayerMcts_test.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/unittests/PlayerRavePr_test.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/unittests/PlayerRave_test.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/unittests/Player_test.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/unittests/Prng_test.hpp
+	)
+
+    CXXTEST_ADD_TEST(hex_unittests.out hex_unittests.cpp ${TEST_SOURCE} )
+    target_link_libraries(hex_unittests.out hex )
+
+    CXXTEST_ADD_TEST(hav_unittests.out hav_unittests.cpp ${TEST_SOURCE} )
+    target_link_libraries(hav_unittests.out hav )
+endif()
 
 
 # install targets
