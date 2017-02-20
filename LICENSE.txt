@@ -1,6 +1,7 @@
 BSD 3-Clause License
 
-Copyright (c) 2017, Fabien Teytaud, Julien Dehos, Joris Duguépéroux, Ahmad Mazyad
+Copyright (c) 2017, 
+Fabien Teytaud, Julien Dehos, Joris Duguépéroux and Ahmad Mazyad
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
