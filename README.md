@@ -5,21 +5,20 @@ The Hex and Havannah connection games with MCTS-based AI players.
 
 ## Games 
 
-- Hex
-- Havannah
+- [Hex](https://en.wikipedia.org/wiki/Hex_(board_game))
+- [Havannah](https://en.wikipedia.org/wiki/Havannah)
 
-TODO lien wikipedia
 
 
 ## MCTS-based algorithms (AI players)
 
-- `PlayerMcts`: vanilla MCTS (TODO ref papier)
-- `PlayerRave`: MCTS with the RAVE improvement (TODO ref papier)
-- `PlayerRaveLgrf1`: TODO
-- `PlayerRaveMast`: TODO
-- `PlayerRaveNast2`: TODO
-- `PlayerRavePpr`: TODO
-- `PlayerRavePr`: RAVE with the improvement proposed in TODO (lien vers hal)
+- `PlayerMcts`: vanilla [MCTS/UCT](https://pdfs.semanticscholar.org/a441/488e8fe40370b7f5f99eb5a1659d93fb7091.pdf)
+- `PlayerRave`: MCTS with the [RAVE](http://machinelearning.wustl.edu/mlpapers/paper_files/icml2007_GellyS07.pdf) improvement
+- `PlayerRaveLgrf1`: MCTS with the [last good reply](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=5672398) improvement
+- `PlayerRaveMast`: MCTS with the [Move-Average Sampling Technique](www.aaai.org/Papers/AAAI/2008/AAAI08-041.pdf) improvement
+- `PlayerRaveNast2`: MCTS with the [N-gram Average Sampling Technique](http://ieeexplore.ieee.org/document/6203383/) improvement
+- `PlayerRavePpr`: MCTS with the [Playout Pruning with Rave](https://hal.archives-ouvertes.fr/hal-01342347/document) improvement
+- `PlayerRavePr`: RAVE with the [poolRave](https://hal.inria.fr/inria-00485555/file/poolrave.pdf) improvement
 
 
 ## Build 
