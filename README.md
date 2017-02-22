@@ -80,8 +80,6 @@ Two human players with AI indications (colors).
 
 ## TODO
 
-- check unit tests
-- complete this readme (references)
 - write a documentation 
 
 
