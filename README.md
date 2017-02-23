@@ -36,6 +36,8 @@ cmake -DCMAKE_BUILD_TYPE=RELEASE ..
 make -j8
 ```
 
+- using nix : `nix-build .`
+- using guix : `GUIX_PACKAGE_PATH=`pwd` guix package -i hex_hav`
 
 ## Run 
 
