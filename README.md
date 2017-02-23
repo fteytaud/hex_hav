@@ -23,11 +23,15 @@ The Hex and Havannah connection games with MCTS-based AI players.
 
 ## Build 
 
+### dependencies
+
 - cmake >= 3.0
 - C++14 compiler
 - pkg-config
 - gtkmm 2
 - cxxtest (optional)
+
+### using cmake
 
 ```
 mkdir build
@@ -36,8 +40,18 @@ cmake -DCMAKE_BUILD_TYPE=RELEASE ..
 make -j8
 ```
 
-- using nix : `nix-build .`
-- using guix : `GUIX_PACKAGE_PATH=`pwd` guix package -i hex_hav`
+### using nix
+
+```
+nix-build .
+```
+
+### using guix 
+
+```
+GUIX_PACKAGE_PATH=`pwd` guix package -i hex_hav
+```
+
 
 ## Run 
 
