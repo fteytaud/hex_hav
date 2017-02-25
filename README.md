@@ -43,7 +43,7 @@ make -j8
 ### using nix
 
 ```
-nix-build .
+nix-build 
 ```
 
 ### using guix 

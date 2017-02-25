@@ -2,11 +2,13 @@ with import <nixpkgs> {};
 
 stdenv.mkDerivation {
     name = "hex_hav";
-    buildInputs = [ stdenv cmake pkgconfig gnome2.gtkmm xorg.libpthreadstubs ];
+    buildInputs = [ stdenv cmake pkgconfig gnome2.gtkmm xorg.libpthreadstubs pcre python cxxtest ];
     src = ./.;
-    configureFlags = '' 
-        -DCMAKE_BUILD_TYPE=RELEASE
+
+    # force parallel building
+    buildPhase = ''
+	make -j8 
     '';
-    enableParallelBuilding = true;
+    # enableParallelBuilding = true;  
 }
 

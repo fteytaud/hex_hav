@@ -101,7 +101,6 @@ target_link_libraries( hav_gui2.out
     ${CMAKE_THREAD_LIBS_INIT} 
     )
 
-
 # unit tests
 
 find_package(CxxTest)
@@ -118,6 +117,8 @@ if(CXXTEST_FOUND)
 	${CMAKE_CURRENT_SOURCE_DIR}/src/unittests/Player_test.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/src/unittests/Prng_test.hpp
 	)
+
+    set( TEST_TARGETS hex_unittests.out hav_unittests.out )
 
     CXXTEST_ADD_TEST(hex_unittests.out hex_unittests.cpp ${TEST_SOURCE} )
     target_link_libraries(hex_unittests.out hex )
@@ -136,5 +137,6 @@ install ( TARGETS
     hav_gui1.out 
     hex_gui2.out 
     hav_gui2.out 
+    ${TEST_TARGETS}
     DESTINATION bin)
 
