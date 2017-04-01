@@ -107,6 +107,12 @@ Two human players with AI indications (colors).
 - Ahmad Mazyad
 
 
+## Publications
+
+- [On the tactical and strategic behaviour of MCTS when biasing random simulations](https://hal.archives-ouvertes.fr/hal-01267056)
+- [Pruning playouts in Monte-Carlo Tree Search for the game of Havannah](https://hal.archives-ouvertes.fr/hal-01342347)
+
+
 ## License
 
 See [LICENSE.txt](LICENSE.txt) (BSD-3)
